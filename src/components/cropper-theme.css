@@ -1,0 +1,170 @@
+.pc-stage {
+  height: min(70vh, 760px);
+  min-height: 320px;
+}
+
+.pc-stage .cropper-container {
+  max-height: min(70vh, 760px);
+}
+
+.pc-stage .cropper-modal {
+  background: rgba(8, 10, 14, 0.55);
+  transition: opacity 0.28s ease;
+}
+
+.pc-stage .cropper-view-box {
+  outline: 1px solid rgba(255, 255, 255, 0.92);
+}
+
+.pc-stage .cropper-line {
+  background-color: #8eb0ff;
+}
+
+.pc-stage .cropper-point {
+  background-color: #ffffff;
+  opacity: 1;
+  box-shadow: 0 0 0 2px #1e4ed8;
+  transition: transform 0.18s ease;
+}
+
+.pc-stage .cropper-dashed {
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.pc-stage .cropper-center::before,
+.pc-stage .cropper-center::after {
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.pc-stage.pc-ratio-animating .cropper-crop-box,
+.pc-stage.pc-ratio-animating .cropper-view-box {
+  transition:
+    width 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    left 0.34s cubic-bezier(0.22, 1, 0.36, 1),
+    top 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pc-stage.pc-ratio-animating .cropper-face {
+  transition: opacity 0.28s ease;
+}
+
+.pc-preview-shell {
+  position: relative;
+}
+
+.pc-preview-shell.is-updating::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    110deg,
+    transparent 20%,
+    color-mix(in srgb, var(--brand) 18%, transparent) 45%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: pc-preview-shimmer 0.9s ease;
+  pointer-events: none;
+}
+
+.pc-preview-fade {
+  animation: pc-preview-enter 0.34s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.pc-preview-fade.is-visible {
+  opacity: 1;
+}
+
+@keyframes pc-preview-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.pc-dim-pulse {
+  animation: pc-dim-flash 0.45s ease;
+}
+
+@keyframes pc-preview-shimmer {
+  from {
+    background-position: 120% 0;
+  }
+  to {
+    background-position: -40% 0;
+  }
+}
+
+@keyframes pc-dim-flash {
+  0% {
+    background-color: transparent;
+  }
+  35% {
+    background-color: color-mix(in srgb, var(--brand-soft) 70%, transparent);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@media (pointer: coarse) {
+  .pc-stage .cropper-point {
+    height: 14px;
+    width: 14px;
+  }
+
+  .pc-stage .cropper-point.point-e,
+  .pc-stage .cropper-point.point-w {
+    margin-top: -7px;
+  }
+
+  .pc-stage .cropper-point.point-n,
+  .pc-stage .cropper-point.point-s {
+    margin-left: -7px;
+  }
+
+  .pc-stage .cropper-point.point-n,
+  .pc-stage .cropper-point.point-ne,
+  .pc-stage .cropper-point.point-nw {
+    top: -7px;
+  }
+
+  .pc-stage .cropper-point.point-e,
+  .pc-stage .cropper-point.point-ne {
+    right: -7px;
+  }
+
+  .pc-stage .cropper-point.point-w,
+  .pc-stage .cropper-point.point-nw,
+  .pc-stage .cropper-point.point-sw {
+    left: -7px;
+  }
+
+  .pc-stage .cropper-point.point-s,
+  .pc-stage .cropper-point.point-se,
+  .pc-stage .cropper-point.point-sw {
+    bottom: -7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pc-stage.pc-ratio-animating .cropper-crop-box,
+  .pc-stage.pc-ratio-animating .cropper-view-box,
+  .pc-preview-fade,
+  .pc-preview-shell.is-updating::after,
+  .pc-dim-pulse {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .pc-preview-fade {
+    opacity: 1;
+    transform: none;
+  }
+}
