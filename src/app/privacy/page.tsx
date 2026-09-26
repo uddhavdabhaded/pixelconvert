@@ -5,7 +5,7 @@ import { contactEmail } from "@/lib/site";
 export const metadata = createMetadata({
   title: "PixelConvert Privacy Policy",
   description:
-    "PixelConvert processes images in your browser. Images are not uploaded, stored, or used for analytics.",
+    "How PixelConvert handles images locally, what hosting logs may include, and how Google AdSense may use cookies for ads.",
   path: "/privacy",
 });
 
@@ -28,7 +28,22 @@ export default function PrivacyPage() {
         <p>
           Loading the website itself requests HTML, CSS, and JavaScript from the host. A hosting provider may keep standard request logs, such as IP address, user agent, and the page URL, to operate and secure the site. Those logs do not contain your images.
         </p>
-        <p>PixelConvert does not set advertising or analytics cookies, and it does not run a third-party analytics script.</p>
+        <h2 className="pt-2 text-xl font-semibold text-ink">Advertising (Google AdSense)</h2>
+        <p>
+          This site may show ads served by Google AdSense. AdSense is separate from PixelConvert&apos;s core image tools: your images still stay in the browser and are not sent to AdSense as part of editing.
+        </p>
+        <p>
+          Google AdSense may use cookies or similar technologies to serve and measure ads (including personalized or non-personalized ads, depending on your region and settings). Learn more in{" "}
+          <a
+            className="font-medium text-brand-ink underline-offset-2 hover:underline"
+            href="https://policies.google.com/technologies/ads"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Google&apos;s Advertising policies
+          </a>
+          .
+        </p>
         <h2 className="pt-2 text-xl font-semibold text-ink">Contact</h2>
         <p>
           The contact form opens your own email application addressed to {contactEmail}. The message is sent only if you send that email. Do not attach images to it if you want them to stay on your device.
