@@ -1,9 +1,10 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { Providers } from "@/components/Providers";
-import { siteUrl } from "@/lib/site";
+import { adsenseClientId, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -41,6 +42,9 @@ export const metadata: Metadata = {
       "Free browser-based image tools for converting, cropping, resizing and compressing JPG, PNG and WEBP images.",
   },
   robots: { index: true, follow: true },
+  other: {
+    "google-adsense-account": adsenseClientId,
+  },
 };
 
 export const viewport: Viewport = {
@@ -75,6 +79,13 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           </main>
           <Footer />
         </Providers>
+        <Script
+          id="adsense"
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseClientId}`}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );

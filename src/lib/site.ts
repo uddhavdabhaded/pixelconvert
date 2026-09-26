@@ -6,6 +6,9 @@ export const siteUrl = (
 
 export const contactEmail = "hello@pixelconvert.app";
 
+/** Google AdSense publisher ID (ca-pub-…). */
+export const adsenseClientId = "ca-pub-8596915110717000";
+
 export function absoluteUrl(path: string) {
   return new URL(path, siteUrl).toString();
 }
